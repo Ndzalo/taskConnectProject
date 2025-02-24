@@ -17,5 +17,9 @@ Itu.
 1. Survey Creation
 2. Login Page Development
 3. Registration Page Development
-4. Help Page Creation
-5. Documentation
+4 Documentation
+ Thendo
+   Project Management: Led the coordination of tasks, ensuring smooth collaboration and project progress.
+Navigation System: Implemented and optimized app navigation for an intuitive user experience.
+UI Components & Buttons: Designed and developed interactive buttons to improve user engagement.
+UI/UX Development: Contributed to designing and implementing several key pages within the app.
