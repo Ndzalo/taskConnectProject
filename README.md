@@ -3,6 +3,7 @@ Due to some technical challenges, we encountered difficulties pushing our work t
 
 We appreciate the opportunity to work on this project and are proud of the final product we have created as a team. Below is a breakdown of each team member’s contributions.
 🏆 Team Contributions
+
 Ndalo
 Database Implementation: Integrated Firebase for authentication and real-time data storage.
 Authentication System: Managed user sign-up, login, and password recovery.
@@ -13,13 +14,15 @@ Rating System: Added a feature for users to rate taskers based on performance
 Mokgadi
 UI/UX Designer - designed UI using Figma for prototyping
 Chatbot - implemented chatbot to help users
-Itu.
+
+Itumeleng
 1. Survey Creation
 2. Login Page Development
 3. Registration Page Development
 4 Documentation
+
  Thendo
-   Project Management: Led the coordination of tasks, ensuring smooth collaboration and project progress.
+Project Management: Led the coordination of tasks, ensuring smooth collaboration and project progress.
 Navigation System: Implemented and optimized app navigation for an intuitive user experience.
 UI Components & Buttons: Designed and developed interactive buttons to improve user engagement.
 UI/UX Development: Contributed to designing and implementing several key pages within the app.
