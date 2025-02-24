@@ -1,6 +1,26 @@
 # taskConnectProject
 Due to some technical challenges, we encountered difficulties pushing our work to GitHub as initially planned. As a result, we had to manually combine our contributions before submission. We acknowledge this setback and have learned from the experience to improve our collaboration and version control in future projects. the first git repo that was used(https://github.com/Teddylikeabear/TaskConnect)
 
+Task Connect
+📌 Project Overview
+
+Task Connect is a community-driven platform that connects people who need tasks done with skilled individuals available to complete them.
+🚀 Features
+
+✅ User authentication (Sign-up, Login, Password Recovery)
+✅ Task posting & management
+✅ Tasker-Taskee communication
+✅ Payment integration (PayPal)
+✅ Rating & review system
+✅ Responsive UI with seamless navigation
+
+🛠 Tech Stack
+
+    Frontend: .NET MAUI
+    Backend: Firebase
+    Database: Firebase Firestore
+    Payment Integration: PayPal
+
 We appreciate the opportunity to work on this project and are proud of the final product we have created as a team. Below is a breakdown of each team member’s contributions.
 🏆 Team Contributions
 
@@ -18,10 +38,10 @@ UI/UX Designer - designed UI using Figma for prototyping
 Chatbot - implemented chatbot to help users
 
 Itumeleng
-1. Survey Creation
-2. Login Page Development
-3. Registration Page Development
-4 Documentation
+Survey Creation
+Login Page Development (Front end)
+Registration Page Development (Front end)
+Documentation
 
  Thendo
 Project Management: Led the coordination of tasks, ensuring smooth collaboration and project progress.
