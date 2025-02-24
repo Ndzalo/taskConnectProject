@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="taskConnectProject.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:taskConnectProject.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.ForegroundColor="#05ABC4"
+    Shell.TitleColor="#05ABC4"
+    Shell.TabBarForegroundColor="OrangeRed"
+    Shell.TabBarTitleColor="OrangeRed"
+    Title="taskConnectProject">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}" IconOverride="back.png"/>
+    </Shell.BackButtonBehavior>
+
+    <TabBar>
+        <ShellContent Title="Tasks" Icon="home.png" Route="TasksMenu" Shell.NavBarIsVisible="False"
+                      ContentTemplate="{DataTemplate local:TasksMenu}"/>
+
+        <ShellContent Title="Chat" Icon="chat.png" Route="ChatPage"
+                      ContentTemplate="{DataTemplate local:ChatPage}"/>
+
+        <ShellContent Title="My Tasks" Icon="to_do.png" Route="myTasksPage"
+                      ContentTemplate="{DataTemplate local:myTasksPage}"/>
+
+        <ShellContent Title="Profile" Icon="profile.png" Route="ProfilePage"
+                      ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        <ShellContent Title="Ratings" Icon="star_filled.jpg" Route="RatingPage1"
+               ContentTemplate="{DataTemplate local:RatingPage1}"/>
+
+    </TabBar>
+</Shell>

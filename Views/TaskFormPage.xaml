@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.TaskFormPage"
+             Shell.NavBarIsVisible="True"
+             Shell.TabBarIsVisible="False"
+             Title="Create Task"
+             BackgroundColor="#F5F5F5">
+    
+    <ContentPage.BindingContext>
+        <viewModels:TaskViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Header -->
+            <Grid ColumnDefinitions="Auto, *" HorizontalOptions="FillAndExpand">
+                <Image Source="back_arrow.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" />
+                <Label Text="Create Task" HorizontalOptions="Center" VerticalOptions="Center" FontSize="24" TextColor="#05ABC4" Grid.Column="1" />
+            </Grid>
+            <!-- Icon -->
+            <Image Source="accountability.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" Margin="20,0"/>
+            <!-- Form Fields -->
+            <!-- Task Entry -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Entry Text="{Binding Task}" Placeholder="Task" BackgroundColor="White" TextColor="Black" />
+            </Frame>
+            <!-- Category Picker -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Picker Title="Category" SelectedItem="{Binding Category}" BackgroundColor="White" TextColor="Black">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Plumbing</x:String>
+                            <x:String>Day Care</x:String>
+                            <x:String>Gardening</x:String>
+                            <x:String>Laundry</x:String>
+                            <x:String>Cleaning</x:String>
+                            <x:String>Other</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
+            <!-- Location Entry -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Entry Text="{Binding Location}" Placeholder="Location" BackgroundColor="White" TextColor="Black" />
+            </Frame>
+            <!-- Description Editor -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Editor Text="{Binding Description}" Placeholder="Description" BackgroundColor="White" TextColor="Black" AutoSize="TextChanges" />
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Editor Text="{Binding createdBy}" Placeholder="created by" BackgroundColor="White" TextColor="Black" AutoSize="TextChanges" />
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Entry Text="{Binding LoggedInUserEmail}" Placeholder="Your Email" BackgroundColor="White" TextColor="Black" />
+            </Frame>
+
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,20,0,20">
+                <Editor Text="{Binding Price}" Placeholder="Price" BackgroundColor="White" TextColor="Black" AutoSize="TextChanges" />
+            </Frame>
+            
+            <!-- Save Button -->
+            <Button Text="Create" Command="{Binding SaveTaskCommand}" BackgroundColor="#FF4500" TextColor="White" CornerRadius="10" Padding="10" Margin="0,20" />
+            <!-- Status Message -->
+            <Label Text="{Binding StatusMessage}" TextColor="Red" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="10" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

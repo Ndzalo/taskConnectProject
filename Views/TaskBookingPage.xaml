@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.TaskBookingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.BindingContext>
+        <viewModel:TaskBookingViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!--     Task Title 
+            <Label Text="{Binding TaskDetails.Title}" 
+         FontSize="22" 
+         FontAttributes="Bold" 
+         TextColor="#333" />
+
+             Task Image 
+            <Image Source="{Binding TaskDetails.Image}" 
+         HeightRequest="200" 
+         Aspect="AspectFill" /> -->
+            
+
+
+
+
+            <!-- Task Location -->
+            <Label Text="Location" FontSize="18" FontAttributes="Bold" TextColor="#333" />
+            <Label Text="{Binding TaskDetails.Location}" 
+                   FontSize="14" 
+                   TextColor="#666" />
+
+            <!-- Task Price -->
+            <Label Text="Price" FontSize="18" FontAttributes="Bold" TextColor="#333" />
+            <Label Text="R {Binding TaskDetails.Price}" 
+                   FontSize="14" 
+                   TextColor="#666" />
+
+            <!-- Confirm Booking Button -->
+            <Button Text="Confirm Booking" 
+                    Command="{Binding ConfirmBookingCommand}" 
+                    BackgroundColor="OrangeRed" 
+                    TextColor="White" 
+                    HeightRequest="50" 
+                    CornerRadius="25" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

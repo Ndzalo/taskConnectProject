@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels ="clr-namespace:taskConnectProject.ViewModel"
+             xmlns:view="clr-namespace:taskConnectProject.Views"
+             x:Class="taskConnectProject.Views.Payment"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="Payment"
+     BackgroundColor="#05ABC4">
+    <!-- Strong Cyan Background -->
+    <ContentPage.BindingContext>
+        <viewModels:PaymentViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="20" Spacing="25" VerticalOptions="Center">
+        <!-- Header -->
+        <Label Text="Make a Secure Payment"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center" />
+
+        <!-- Instructions -->
+        <Label Text="Click the button below to proceed to the secure payment gateway."
+               FontSize="16"
+               TextColor="black"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <!-- Payment Button -->
+        <Button Text="Proceed to Payment"
+                Command="{Binding OpenPaymentLinkCommand}"
+                BackgroundColor="#FF9800"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Center" />
+
+        <!-- Status Message (if any) -->
+        <Label Text="{Binding StatusMessage}"
+               FontSize="14"
+               TextColor="Red"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+    </StackLayout>
+</ContentPage>

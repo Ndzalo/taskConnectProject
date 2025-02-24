@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:taskConnectProject.Converters"
+             x:Class="taskConnectProject.Views.RatingPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="Rate">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StarRatingConverter x:Key="StarRatingConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="16">
+            <Label Text="Rate Your Experience" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   TextColor="#05ABC4"
+                   HorizontalOptions="Center"/>
+
+            <Frame BackgroundColor="White" 
+                   CornerRadius="10" 
+                   HasShadow="True" 
+                   Margin="0,10">
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Select Rating:" 
+                           FontSize="16"
+                           Margin="0,10,0,0"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <ImageButton Source="{Binding Star1Source}" Command="{Binding RateCommand}" CommandParameter="1" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                        <ImageButton Source="{Binding Star2Source}" Command="{Binding RateCommand}" CommandParameter="2" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                        <ImageButton Source="{Binding Star3Source}" Command="{Binding RateCommand}" CommandParameter="3" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                        <ImageButton Source="{Binding Star4Source}" Command="{Binding RateCommand}" CommandParameter="4" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                        <ImageButton Source="{Binding Star5Source}" Command="{Binding RateCommand}" CommandParameter="5" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+
+                    </HorizontalStackLayout>
+
+                    <Label Text="Comment (Optional):" 
+                           FontSize="16"
+                           Margin="0,20,0,0"/>
+
+                    <Editor Placeholder="Write your review here..."
+                            Text="{Binding Comment}"
+                            HeightRequest="100"
+                            MaxLength="500"/>
+
+                    <Button Text="Submit Rating"
+                            Command="{Binding SubmitRatingCommand}"
+                            BackgroundColor="#05ABC4"
+                            TextColor="White"
+                            CornerRadius="5"
+                            Margin="0,20,0,0"
+                            HeightRequest="50"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

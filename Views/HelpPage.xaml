@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="taskConnectProject.Views.HelpPage"
+             xmlns:vm="clr-namespace:taskConnectProject.ViewModel"
+             Title="HelpPage">
+
+    <ContentPage.BindingContext>
+        <vm:HelpViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="20">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+            <Frame Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#f9f9f9" Padding="20" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Need Help?" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="📞 Call Support: +27 637993375" />
+                    <Label Text="📧 Email: support@taskconnect.com" />
+                </StackLayout>
+            </Frame>
+
+            <Label Grid.Row="1" Grid.ColumnSpan="2" Text="Frequently Asked Questions" FontSize="18" FontAttributes="Bold" Margin="10,20,10,10"/>
+
+            <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding FAQs}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" BackgroundColor="#f0f0f0" CornerRadius="10" Margin="5">
+                            <Grid RowDefinitions="Auto,Auto">
+                                <Button Grid.Row="0" Text="{Binding Question}"
+                                     BackgroundColor="#05ABC4"
+                                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HelpViewModel}}, Path=ToggleFAQCommand}"
+                                     CommandParameter="{Binding}"/>
+                                <Label Grid.Row="1" Text="{Binding Answer}" IsVisible="{Binding IsExpanded}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

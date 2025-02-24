@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="taskConnectProject.Views.ProfilePage"
+             Shell.NavBarIsVisible="False"
+             Title="Profile"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <!-- Profile Header -->
+                <Frame BackgroundColor="#05ABC4" CornerRadius="15" Padding="20" HorizontalOptions="Fill">
+                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Image Source="user.png" WidthRequest="80" HeightRequest="80" HorizontalOptions="Center"/>
+                        <!-- User Name -->
+                        <Label Text="{Binding Name}" FontSize="22" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        <!-- User Email -->
+                        <Label Text="{Binding Email}" FontSize="18" TextColor="White" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Account Section -->
+                <Label Text="Account" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4" />
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="#05ABC4">
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Image Source="list.png" WidthRequest="40" HeightRequest="70" VerticalOptions="Center" />
+                            <Button Text="Profile Details" 
+                                    TextColor="#05ABC4" 
+                                    BackgroundColor="Transparent" 
+                                    FontAttributes="Bold" 
+                                    Command="{Binding ToggleProfileDetailsCommand}" />
+                        </HorizontalStackLayout>
+
+                        <!-- Collapsible Profile Details Section -->
+                        <StackLayout IsVisible="{Binding IsProfileDetailsVisible}" Padding="10" BackgroundColor="#E8F4F8">
+                            <Label Text="Full Name:" FontSize="16" FontAttributes="Bold" TextColor="#05ABC4" />
+                            <Label Text="{Binding Name}" FontSize="16" TextColor="Black" />
+
+                            <Label Text="Email:" FontSize="16" FontAttributes="Bold" TextColor="#05ABC4" />
+                            <Label Text="{Binding Email}" FontSize="16" TextColor="Black" />
+
+                            <Label Text="Phone Number:" FontSize="16" FontAttributes="Bold" TextColor="#05ABC4" />
+                            <Label Text="{Binding phoneNumber}" FontSize="16" TextColor="Black" />
+
+                            <Label Text="ID number:" FontSize="16" FontAttributes="Bold" TextColor="#05ABC4" />
+                            <Label Text="{Binding idNumber}" FontSize="16" TextColor="Black" />
+                        </StackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+
+                <!-- Support Section -->
+                <Label Text="Support" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4" />
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="#05ABC4">
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Image Source="help.png" WidthRequest="40" HeightRequest="70" VerticalOptions="Center" />
+                            <Button Text="Help" TextColor="#05ABC4" BackgroundColor="Transparent" FontAttributes="Bold" Command="{Binding NavigateToHelpCommand}" />
+                        </HorizontalStackLayout>
+                        <BoxView HeightRequest="1" BackgroundColor="#E0E0E0" />
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+
+                        </HorizontalStackLayout>
+                        <BoxView HeightRequest="1" BackgroundColor="#E0E0E0" />
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Image Source="security.png" WidthRequest="40" HeightRequest="70" VerticalOptions="Center" />
+                            <Button Text="Security and Privacy" TextColor="#05ABC4" BackgroundColor="Transparent" FontAttributes="Bold" Clicked="OnPrivacySettingsClicked" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Logout Section -->
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="#05ABC4">
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Image Source="logout.png" WidthRequest="40" HeightRequest="70" VerticalOptions="Center" />
+                        <Button Text="Logout" TextColor="#FF4500" BackgroundColor="Transparent" FontAttributes="Bold"
+                                 Command="{Binding LogoutCommand}"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

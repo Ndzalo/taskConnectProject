@@ -1,0 +1,51 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.TaskApplicantsPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="Task Applicants">
+    
+
+    <ContentPage.BindingContext>
+        <viewModel:TaskApplicantsViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Spacing="15" Padding="16">
+        <Label Text="Applicants" FontSize="22" FontAttributes="Bold" TextColor="#05ABC4"/>
+
+        <CollectionView ItemsSource="{Binding Applicants}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,0,0,15" BorderColor="#05ABC4">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Email}" 
+                                   FontSize="16" 
+                                   TextColor="#607D8B"
+                                   Padding="10"/>
+                            <!-- Add a button to select the applicant -->
+                            <Button Text="Select Applicant"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:TaskApplicantsViewModel}}, Path=SelectApplicantCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#05ABC4"
+                                    TextColor="White"
+                                    CornerRadius="5"
+                                    Margin="10"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Add a button to view accepted offers -->
+        <Button Text="View Accepted Offers"
+                Command="{Binding ViewAcceptedOffersCommand}"
+                BackgroundColor="Green"
+                TextColor="White"
+                CornerRadius="16"
+                FontAttributes="Bold"
+                FontSize="14"
+                HeightRequest="45"
+                Margin="0,20,0,0"/>
+    </VerticalStackLayout>
+</ContentPage>

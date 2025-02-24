@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.RegisterPage"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+            <!-- App Header -->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Image Source="file.png" WidthRequest="100" HeightRequest="100" />
+                <Label Text="Welcome to TaskConnect" FontSize="25" TextColor="#0077B6" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                <Label Text="Create Your Account" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                <Label Text="Sign up to continue" FontSize="16" TextColor="Gray" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- Input Frame -->
+            <Frame CornerRadius="15" BackgroundColor="White" Padding="20" HasShadow="True" BorderColor="#E0E0E0">
+                <VerticalStackLayout Spacing="15">
+                    <Entry Placeholder="Full Name" Text="{Binding Name}" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="Transparent" FontSize="16" />
+                    <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="Transparent" FontSize="16" />
+                    <Entry Placeholder="Phone Number" Text="{Binding phoneNumber}" Keyboard="Telephone" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="Transparent" FontSize="16" />
+                    <Entry Placeholder="ID Number" Text="{Binding idNumber}" Keyboard="Numeric" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="Transparent" FontSize="16" />
+                    <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="Transparent" FontSize="16" />
+                    <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="Transparent" FontSize="16" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sign Up Button -->
+            <Button Text="Sign Up" Command="{Binding RegisterCommand}" BackgroundColor="#FF4500" TextColor="White" CornerRadius="25" Padding="10" FontSize="18" />
+
+            <!-- Status Message -->
+            <Label Text="{Binding StatusMessage}" HorizontalOptions="Center" TextColor="Red" FontSize="14" FontAttributes="Italic" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

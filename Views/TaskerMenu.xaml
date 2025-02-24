@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.TaskerMenu"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.BindingContext>
+        <viewModels:TaskerPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="16">
+            <!-- Switch Between Taskee and Tasker -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button 
+                    Text="Taskee" 
+                    BackgroundColor="#05ABC4" 
+                    TextColor="White" 
+                    Command="{Binding SwitchToTaskeeCommand}"
+                    CornerRadius="8"
+                    Margin="4"
+                    FontSize="14"
+                    WidthRequest="120"/>
+                <Button 
+                    Text="Tasker" 
+                    BackgroundColor="OrangeRed" 
+                    TextColor="White" 
+                    Command="{Binding SwitchToTaskerCommand}"
+                    CornerRadius="8"
+                    Margin="4"
+                    FontSize="14"
+                    WidthRequest="120"/>
+            </StackLayout>
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="*, Auto" Margin="0,8,0,15">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Hi " FontSize="22" FontAttributes="Bold" TextColor="#05ABC4"/>
+                    <Label Text="Create and manage your tasks" FontSize="16" TextColor="#607D8B"/>
+                </VerticalStackLayout>
+                <Image Grid.Column="1" Source="smiling.png" HeightRequest="50" WidthRequest="35"
+                    SemanticProperties.Description="Profile image"
+                    SemanticProperties.HeadingLevel="Level3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <!-- Post a New Task -->
+            <Frame BackgroundColor="#05ABC4" CornerRadius="18" Padding="15" HasShadow="True">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Post a New Task" TextColor="White" FontSize="18" FontAttributes="Bold"/>
+                        <Label Text="Tell us what you need help with" TextColor="White" FontSize="14"/>
+                        <Button Text="Create Task" 
+                             BackgroundColor="OrangeRed" 
+                             TextColor="White" 
+                             CornerRadius="18" 
+                             Margin="0,8,0,0"
+                             FontAttributes="Bold"
+                             FontSize="14"
+                             Command="{Binding CreateNewTaskCommand}"/>
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="create_task.png" HeightRequest="80" WidthRequest="80"/>
+                </Grid>
+            </Frame>
+
+            <ScrollView>
+                <StackLayout>
+                    <!-- Task Categories -->
+                    <Label Text="Task Categories" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4" />
+                    <CollectionView ItemsSource="{Binding TaskCategories}" 
+                        ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" CornerRadius="15" Margin="4" HasShadow="True" Padding="8">
+                                    <StackLayout Orientation="Vertical">
+                                        <Image Source="{Binding Icon}" HeightRequest="80" WidthRequest="80"
+                                   SemanticProperties.Description="{Binding Name}" />
+                                        <Label Text="{Binding Name}" 
+                                   HorizontalOptions="Center" 
+                                   TextColor="#05ABC4"
+                                   FontAttributes="Bold"
+                                   FontSize="12" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- My Posted Tasks -->
+            <Label Text="My Posted Tasks" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4"/>
+            <CollectionView ItemsSource="{Binding PostedTasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,0,0,15" BorderColor="#05ABC4">
+                            <Grid ColumnDefinitions="Auto, Auto, Auto"
+                                  RowDefinitions="Auto, Auto, Auto,Auto">
+
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Task}" FontSize="17" TextColor="#607D8B"/>
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Price}" FontAttributes="Bold" TextColor="#05ABC4" FontSize="16"/>
+                                <Label Grid.Column="1" Grid.Row="2" Text="{Binding Status}" FontSize="12" TextColor="#607D8B"/>
+                                <StackLayout Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Spacing="10">
+                                    <Button 
+                                        Text="View Applicants" 
+                                        BackgroundColor="#F44336" 
+                                        TextColor="White" 
+                                        CornerRadius="16"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HeightRequest="35"
+                                        WidthRequest="120"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewApplicantsCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                    <Button 
+                                        Text="Cancel Task" 
+                                        BackgroundColor="#F44336" 
+                                        TextColor="White" 
+                                        CornerRadius="16"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HeightRequest="35"
+                                        WidthRequest="100"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelTaskCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!-- Expenses Section -->
+            <Frame BackgroundColor="#05ABC4" CornerRadius="18" Padding="15" HasShadow="True">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Total Expenses" TextColor="White" FontSize="18" FontAttributes="Bold"/>
+                        <Label Text="{Binding TotalExpenses, StringFormat='Total: ${0}'}" TextColor="White" FontSize="16"/>
+                       
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="expenses.png" HeightRequest="80" WidthRequest="80"/>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

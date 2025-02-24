@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.myTasksPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.BindingContext>
+        <vm:TaskViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Spacing="15" Padding="16">
+
+                <!-- Page Header -->
+                <Grid ColumnDefinitions="*, Auto" Margin="0,8,0,15">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="My Tasks" FontSize="22" FontAttributes="Bold" TextColor="#05ABC4" />
+                        <Label Text="Here are all your saved tasks" FontSize="16" TextColor="#607D8B" />
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="task.png" HeightRequest="50" WidthRequest="50" />
+                </Grid>
+
+                <!-- Task List -->
+                <CollectionView ItemsSource="{Binding Tasks}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,0,0,15" BorderColor="#05ABC4">
+                                <VerticalStackLayout Padding="10" Spacing="5">
+
+                                    <!-- Task Details -->
+                                    <Label Text="{Binding Task}" FontAttributes="Bold" TextColor="#05ABC4" FontSize="16" />
+                                    <Label Text="{Binding Category}" FontSize="12" TextColor="#607D8B" />
+                                    <Label Text="{Binding Location}" FontSize="12" TextColor="#607D8B" />
+                                    <Label Text="{Binding Description}" FontSize="12" TextColor="#607D8B" />
+                                    <Label Text="{Binding Timestamp, StringFormat='{}{0:MM/dd/yyyy HH:mm}'}" FontSize="10" TextColor="#9E9E9E" />
+                                    <Label Text ="{Binding Price}" FontSize="12" TextColor="#607D8B"/>
+                                    <Label Text ="{Binding createdBy }" FontSize="12" TextColor="#607D8B"/>
+
+                                   
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Footer Section -->
+                <Button 
+                    Text="Add New Task" 
+                    BackgroundColor="OrangeRed" 
+                    TextColor="White" 
+                    CornerRadius="16"
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    HeightRequest="50"
+                    Command="{Binding AddNewTaskCommand}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

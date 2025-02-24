@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:taskConnectProject.Converters"
+             x:Class="taskConnectProject.Views.ChatPage"
+             Shell.NavBarIsVisible="False"
+             Title="Chat"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- User bubble -->
+            <DataTemplate x:Key="UserTemplate">
+                <Frame BackgroundColor="#3C8CE7" CornerRadius="15" Padding="10" Margin="5" HorizontalOptions="End">
+                    <Label Text="{Binding Content}" TextColor="White" FontSize="15" />
+                </Frame>
+            </DataTemplate>
+            <!-- Bot bubble -->
+            <DataTemplate x:Key="BotTemplate">
+                <Frame BackgroundColor="#FF512F" CornerRadius="15" Padding="10" Margin="5" HorizontalOptions="Start">
+                    <Label Text="{Binding Content}" TextColor="White" FontSize="15" />
+                </Frame>
+            </DataTemplate>
+            <c:MsgTempSelector x:Key="MessageTemplateSelector"
+                               UserTemplate="{StaticResource UserTemplate}"
+                               BotTemplate="{StaticResource BotTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *" VerticalOptions="Start" BackgroundColor="#05ABC4" Padding="10">
+            <StackLayout Grid.Column="1" HorizontalOptions="End">
+                <Image Source="chatbot.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" />
+                <HorizontalStackLayout Spacing="2">
+                    <Label Text="Task" TextColor="White" FontAttributes="Italic" FontSize="15" />
+                    <Label Text="Buddy" TextColor="Yellow" FontAttributes="Italic" FontSize="15" />
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Grid>
+
+        <!-- Chat messages with loading indicator -->
+        <Grid Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Messages}" 
+                          ItemTemplate="{StaticResource MessageTemplateSelector}" 
+                          Margin="10" 
+                          VerticalOptions="FillAndExpand" />
+
+            <!-- Loading Indicator -->
+            <Grid IsVisible="{Binding IsLoading}"
+                  BackgroundColor="#80000000">
+                <VerticalStackLayout HorizontalOptions="Center" 
+                                   VerticalOptions="Center" 
+                                   Spacing="10">
+                    <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                     Color="#05ABC4"
+                                     HeightRequest="50"
+                                     WidthRequest="50" />
+                    <Label Text="Processing..." 
+                           TextColor="White"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <!-- Input area -->
+        <Grid Grid.Row="2" ColumnDefinitions="*, Auto" BackgroundColor="#FFFFFF" Padding="10">
+            <Frame CornerRadius="15" BorderColor="#05ABC4" BackgroundColor="White">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Entry Text="{Binding UserInput}" Placeholder="Type a message..." 
+                           VerticalOptions="Center" HorizontalOptions="Fill" />
+                    <Button Text="Send" BackgroundColor="#FF512F" TextColor="White" 
+                            Command="{Binding SendMessageCommand}" Grid.Column="1" />
+                </Grid>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

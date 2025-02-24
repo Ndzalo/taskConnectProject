@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.WelcomePage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <viewModel:WelcomePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="16" VerticalOptions="Center">
+
+            <!-- Welcome Header -->
+            <StackLayout HorizontalOptions="Center" Padding="10">
+                <Label Text="Welcome to TaskConnect" FontSize="24" FontAttributes="Bold" TextColor="#05ABC4" HorizontalOptions="Center"/>
+                <Label Text="Find tasks, get help, and start earning!" FontSize="16" TextColor="#607D8B" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Choose Taskee or Tasker -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button 
+                    Text="Taskee" 
+                    BackgroundColor="#05ABC4" 
+                    TextColor="White" 
+                    Command="{Binding NavigateToLoginCommand}"
+                    CornerRadius="8"
+                    Margin="4"
+                    FontSize="14"
+                    WidthRequest="120"/>
+                <Button 
+                    Text="Tasker" 
+                    BackgroundColor="OrangeRed" 
+                    TextColor="White" 
+                    Command="{Binding NavigateToLoginCommand}"
+                    CornerRadius="8"
+                    Margin="4"
+                    FontSize="14"
+                    WidthRequest="120"/>
+            </StackLayout>
+
+            <!--  Image from Resources before Get Started Section -->
+            <Image Source="welcomepic.png" HeightRequest="300" WidthRequest="300" Aspect="AspectFill" />
+
+
+            <!-- Get Started Section -->
+            <Frame BackgroundColor="#05ABC4" CornerRadius="18" Padding="15" HasShadow="True" HorizontalOptions="Center">
+                <Grid ColumnDefinitions="*, Auto" HorizontalOptions="CenterAndExpand">
+                    <VerticalStackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Find the Perfect Task" TextColor="White" FontSize="18" FontAttributes="Bold" Padding="60,0,10,0" HorizontalTextAlignment="Center" />
+                        <Label Text="Explore a variety of tasks available" TextColor="White" FontSize="14" Padding="45,0,0,0" />
+                        <Button Text="Get Started" 
+                             BackgroundColor="OrangeRed" 
+                             TextColor="White" 
+                             CornerRadius="18" 
+                             Margin="70,20,0,0"
+                             FontAttributes="Bold"
+                             FontSize="14"
+                             Command="{Binding NavigateToLoginCommand}"/>
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="task_finder.png" HeightRequest="80" WidthRequest="80"/>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

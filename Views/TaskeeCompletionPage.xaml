@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.TaskeeCompletionPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="Task Completion">
+
+
+    <ContentPage.BindingContext>
+        <viewModel:TaskCompletionViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="16">
+            <Label Text="Task Completion" FontSize="22" FontAttributes="Bold" TextColor="#05ABC4"/>
+
+            <!-- Task Details -->
+            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,0,0,15" BorderColor="#05ABC4">
+                <VerticalStackLayout>
+                    <Label Text="{Binding TaskName}" 
+                           FontSize="16" 
+                           TextColor="#607D8B"
+                           Padding="10"/>
+                    <Label Text="{Binding TaskLocation}" 
+                           FontSize="14" 
+                           TextColor="#607D8B"
+                           Padding="10"/>
+                    <Label Text="{Binding TaskPrice, StringFormat='Price: ${0}'}" 
+                           FontSize="14" 
+                           TextColor="#607D8B"
+                           Padding="10"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Tasker Confirmation -->
+            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,0,0,15" BorderColor="#05ABC4">
+                <VerticalStackLayout>
+                    <Label Text="Tasker Confirmation" 
+                           FontSize="16" 
+                           TextColor="#607D8B"
+                           Padding="10"/>
+                    <Button Text="Mark as Completed"
+                            Command="{Binding TaskeeConfirmCommand}"
+                            BackgroundColor="#05ABC4"
+                            TextColor="White"
+                            CornerRadius="5"
+                            Margin="10"/>
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <Button Text="Rate User"
+                    Command="{Binding NavigateToRatingCommand}"
+                    BackgroundColor="#05ABC4"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Margin="0,10,0,0"/>
+           
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

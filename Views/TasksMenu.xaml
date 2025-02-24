@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:taskConnectProject.ViewModel"
+             x:Class="taskConnectProject.Views.TasksMenu"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.BindingContext>
+        <viewModel:HomePageViewModel />
+        
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="16">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button 
+                    Text="Taskee" 
+                    BackgroundColor="OrangeRed" 
+                    TextColor="White" 
+                    Command="{Binding SwitchToTaskeeCommand}"
+                    CornerRadius="8"
+                    Margin="4"
+                    FontSize="14"
+                    WidthRequest="120"/>
+                <Button 
+                    Text="Tasker" 
+                    BackgroundColor="#05ABC4" 
+                    TextColor="White" 
+                    Command="{Binding SwitchToTaskerCommand}"
+                    CornerRadius="8"
+                    Margin="4"
+                    FontSize="14"
+                    WidthRequest="120"/>
+            </StackLayout>
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="*, Auto" Margin="0,8,0,15">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="{Binding CurrentUserName, StringFormat='Hi {0}'}" 
+                           FontSize="22" 
+                           FontAttributes="Bold" 
+                           TextColor="#05ABC4"/>    
+                    <Label Text="Ready to take on some tasks?" FontSize="16" TextColor="#607D8B"/>
+                </VerticalStackLayout>
+                <Image Grid.Column="1" Source="smiling.png" HeightRequest="50" WidthRequest="35"
+                    SemanticProperties.Description="Profile image"
+                    SemanticProperties.HeadingLevel="Level3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <!-- Search Bar -->
+            <Frame BackgroundColor="White" CornerRadius="18" Padding="12,4" HasShadow="True" BorderColor="#05ABC4">
+                <Entry x:Name="SearchBar"
+                    Placeholder="Search tasks..."
+                    PlaceholderColor="#9E9E9E"
+                    TextColor="#05ABC4"
+                    FontSize="14"/>
+            </Frame>
+
+            <!-- Find the Perfect Task Section -->
+            <Frame BackgroundColor="#05ABC4" CornerRadius="18" Padding="15" HasShadow="True">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Find the Perfect Task" TextColor="White" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="Explore a variety of tasks available" TextColor="White" FontSize="14" Padding=" 0,10,0,0"/>
+                       
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="tasks.png" HeightRequest="80" WidthRequest="80"/>
+                </Grid>
+            </Frame>
+
+            <!-- Categories -->
+            <Label Text="Task Categories" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4"/>
+            <CollectionView ItemsSource="{Binding Categories}" 
+                            ItemsLayout="HorizontalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" CornerRadius="15" Margin="4" HasShadow="True" Padding="8">
+                            <StackLayout Orientation="Vertical">
+                                <Image Source="{Binding Icon}" HeightRequest="80" WidthRequest="80"
+                                    SemanticProperties.Description="{Binding Name}"/>
+                                <Label Text="{Binding Name}" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="#05ABC4"
+                                       FontAttributes="Bold"
+                                       FontSize="12"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Available Tasks -->
+            <Label Text="Available Tasks" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4"/>
+            <CollectionView ItemsSource="{Binding FilteredTasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,0,0,15" BorderColor="#05ABC4">
+                            <Grid ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto, Auto, Auto, Auto">
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Task}" FontSize="17" TextColor="#607D8B"/>
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Price}" FontAttributes="Bold" TextColor="#05ABC4" FontSize="16"/>
+                                <Label Grid.Column="1" Grid.Row="2" Text="{Binding Location}" FontSize="17" TextColor="#607D8B"/>
+                                <Button Grid.Row="3" 
+                                        Grid.Column="1" 
+                                        Text="Book Now" 
+                                        BackgroundColor="OrangeRed" 
+                                        TextColor="White" 
+                                        CornerRadius="16"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HeightRequest="35"
+                                        WidthRequest="100"
+                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:HomePageViewModel}}, Path=BookTaskCommand}"
+                                        CommandParameter="{Binding .}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Notifications Section -->
+            <Label Text="Notifications" FontSize="18" FontAttributes="Bold" TextColor="#05ABC4"/>
+            <Button Text="View Notifications" 
+                    BackgroundColor="OrangeRed" 
+                    TextColor="White" 
+                    CornerRadius="16"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HeightRequest="45"
+                    Command="{Binding NavigateToNotificationsCommand}" />
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource NullOrEmptyToBoolConverter}}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start" />
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
