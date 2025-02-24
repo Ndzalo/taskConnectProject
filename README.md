@@ -11,6 +11,8 @@ UI/UX Design: Designed and implemented several pages for a seamless user experie
 Tasker-Taskee Communication: Ensured taskers and taskees could interact efficiently within the app.
 Payment Integration: Implemented PayPal to facilitate secure transactions.
 Rating System: Added a feature for users to rate taskers based on performance
+
+
 Mokgadi
 UI/UX Designer - designed UI using Figma for prototyping
 Chatbot - implemented chatbot to help users
