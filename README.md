@@ -1,5 +1,5 @@
 # taskConnectProject
-Due to some technical challenges, we encountered difficulties pushing our work to GitHub as initially planned. As a result, we had to manually combine our contributions before submission. We acknowledge this setback and have learned from the experience to improve our collaboration and version control in future projects.
+Due to some technical challenges, we encountered difficulties pushing our work to GitHub as initially planned. As a result, we had to manually combine our contributions before submission. We acknowledge this setback and have learned from the experience to improve our collaboration and version control in future projects. the first git repo that was used(https://github.com/Teddylikeabear/TaskConnect)
 
 We appreciate the opportunity to work on this project and are proud of the final product we have created as a team. Below is a breakdown of each team member’s contributions.
 🏆 Team Contributions
